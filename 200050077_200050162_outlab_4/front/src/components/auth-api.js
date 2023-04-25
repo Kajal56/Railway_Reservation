@@ -29,7 +29,7 @@ async function logout() {
 
 // -----------------------------------------------------------------
 
-async function refund() {
+async function getRefunds() {
   const response = await fetch("/api/refund", {
     method: "GET",
   });
@@ -82,18 +82,20 @@ async function getBookings() {
   return json;
 }
 
-async function bookTicket() {
+async function bookTicket(train) {
   const response = await fetch("/api/book-ticket", {
     method: "POST",
+    body: JSON.stringify(train)
   });
   const json = await response.json();
   console.log(json);
   return json;
 }
 
-async function cancelTicket() {
+async function cancelTicket(pnr) {
   const response = await fetch("/api/cancel-ticket", {
     method: "POST",
+    body: JSON.stringify(pnr)
   });
   const json = await response.json();
   console.log(json);
@@ -103,14 +105,14 @@ async function cancelTicket() {
 // -----------------------------------------------------------------
 
 export {
-  login,
-  register,
+  login,        //emailid, password
+  register,     //emailid, password, mobileno, dob
   logout,
-  refund,
-  searchTrain,
-  searchPnr,
+  getRefunds,
+  searchTrain,  //f_tno ,f_sp, f_dp, f_doj , f_class
+  searchPnr,    //pnr
   userInfo,
-  getBookings,
-  bookTicket,
-  cancelTicket
+  getBookings,  
+  bookTicket,   //trainno, sp, dp, doj, j_class
+  cancelTicket  //pnr
 }

@@ -5,10 +5,10 @@ const pool = require("../utils/db")
 router.get("/mybookings", async (req, res) => {
   try {
     if (req.session.user) {
-      const id = req.session.user.id
-      const past_bookings = await pool.query("SELECT * FROM resv WHERE id = $1 and doj < CURRENT_DATE ", [req.session.user.id]);
+      const id = req.session.user.id;
+      const past_bookings = await pool.query("SELECT * FROM resv WHERE id = $1 and doj < CURRENT_DATE ", [id]);
       console.log(past_bookings.rows);
-      const upcoming_bookings = await pool.query("SELECT * FROM resv WHERE id = $1 and doj > CURRENT_DATE ", [req.session.user.id]);
+      const upcoming_bookings = await pool.query("SELECT * FROM resv WHERE id = $1 and doj > CURRENT_DATE ", [id]);
       console.log(upcoming_bookings.rows);
       let all_bookings = {};
       all_bookings["past_bookings"] = past_bookings.rows;
@@ -20,7 +20,7 @@ router.get("/mybookings", async (req, res) => {
         auth: false,
         message: "not authorized",
         registration: false
-      })
+      });
     }
   } catch (error) {
     console.error(error.message);
@@ -65,7 +65,6 @@ router.post("/cancel-ticket", async (req, res) => {
 
     if (req.session.user) {
       const { pnr } = req.body;
-      const id = req.session.user.id;
       await pool.query("select insert_into_canc ($1 , $2 )", [pnr, 1500]);
 
       return res.status(200).json({
@@ -76,7 +75,7 @@ router.post("/cancel-ticket", async (req, res) => {
         auth: false,
         message: "not authorized",
         registration: false
-      })
+      });
     }
   } catch (error) {
     console.error(error.message);
@@ -85,4 +84,4 @@ router.post("/cancel-ticket", async (req, res) => {
 })
 
 
-module.exports = router
+module.exports = router;

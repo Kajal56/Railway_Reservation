@@ -16,7 +16,7 @@ router.post("/login", async (req, res) => {
       return res.json({
         auth: false,
         message: "Invalid Password"
-      })
+      });
     }
     console.log("check3");
     req.session.user = { id: user.rows[0].id };
@@ -24,7 +24,7 @@ router.post("/login", async (req, res) => {
     res.json({
       auth: true,
       message: "successful login"
-    })
+    });
 
   } catch (err) {
     console.error(err.message);
@@ -44,7 +44,7 @@ router.post("/register", async (req, res) => {
     await pool.query("Insert into account (emailid, password, mobileno, dob) values ($1,$2,$3,$4)", [emailid, password, mobileno, dob])
     return res.status(200).json({
       success: true
-    })
+    });
   } catch (err) {
     console.error(err.message);
     return res.status(500).send("Server error");
@@ -55,7 +55,7 @@ router.get("/logout", (req, res) => {
   req.session.destroy()
   res.json({
     auth: false
-  })
+  });
 })
 
 

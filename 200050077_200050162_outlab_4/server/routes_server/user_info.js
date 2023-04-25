@@ -5,7 +5,7 @@ router.get("/user-info", async (req, res) => {
   try {
 
     if (req.session.user) {
-      const id = req.session.user.id
+      const id = req.session.user.id;
 
       const user = await pool.query("SELECT * FROM account WHERE id = $1", [
         id
@@ -26,4 +26,4 @@ router.get("/user-info", async (req, res) => {
 })
 
 
-module.exports = router
+module.exports = router;
