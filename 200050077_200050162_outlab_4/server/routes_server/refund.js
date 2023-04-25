@@ -1,16 +1,15 @@
 const router = require('express').Router()
 const pool = require("../utils/db")
 
-router.get("/home", async (req, res) => {
+router.get("/refund", async (req, res) => {
   try {
     if (req.session.user) {
       const id = req.session.user.id
-
-      const user = await pool.query("SELECT * FROM account WHERE id = $1", [
+      console.log(id);
+      const refunds = await pool.query("SELECT * FROM resv natural join refund_history WHERE id = $1", [
         id
       ]);
-
-      return res.status(200).json(user.rows)
+      return res.status(200).json(refunds.rows)
     } else {
       return res.status(401).json({
         auth: false,
@@ -20,10 +19,7 @@ router.get("/home", async (req, res) => {
     }
   } catch (error) {
     console.log(error)
-    res.status(500).send("Server Error ");
-
   }
 })
-
 
 module.exports = router

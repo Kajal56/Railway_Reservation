@@ -1,8 +1,9 @@
 const router = require('express').Router()
 const pool = require("../utils/db")
 
-router.get("/home", async (req, res) => {
+router.get("/user-info", async (req, res) => {
   try {
+
     if (req.session.user) {
       const id = req.session.user.id
 
@@ -20,8 +21,6 @@ router.get("/home", async (req, res) => {
     }
   } catch (error) {
     console.log(error)
-    res.status(500).send("Server Error ");
-
   }
 })
 

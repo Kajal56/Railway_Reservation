@@ -1,7 +1,7 @@
 { 
-  "user" : "yash", 
-  "password": "yash_9567#", 
+  "user" : "retro", 
+  "password": "1234", 
   "host": "localhost", 
   "port": "5432", 
-  "database": "master" 
+  "database": "project_db" 
 }
