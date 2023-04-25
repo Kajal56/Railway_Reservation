@@ -34,13 +34,13 @@ app.use(session({
   createTableIfMissing: true
 }));
 
+
 // Paths
-app.use("/api",   require('./routes_server/logReg'));
+app.use("/auth", require('./routes_server/logReg'));
 app.use("/api", require('./routes_server/refund'));
-app.use("/api", require('./routes_server/home'));
 app.use("/api", require('./routes_server/booking'));
 app.use("/api", require('./routes_server/user_info'));
-app.use("/api" , require('./routes_server/train'));
+app.use("/api", require('./routes_server/train'));
 
 
 
