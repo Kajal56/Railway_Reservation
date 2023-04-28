@@ -26,10 +26,10 @@ export default function Booking() {
 
   return (
     <div className="justify-center">
-      {/* <h1>
+      <h1>
         Following are the details for your booking, please pay and confirm
         confirm booking.
-      </h1> */}
+      </h1>
       <div class="bg-gray-100 p-4 rounded-lg">
         <div class="grid grid-cols-2 gap-4">
           <div>

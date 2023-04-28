@@ -3,5 +3,5 @@
   "password": "kajal", 
   "host": "localhost", 
   "port": "5432", 
-  "database": "project_db" 
+  "database": "my_project" 
 }

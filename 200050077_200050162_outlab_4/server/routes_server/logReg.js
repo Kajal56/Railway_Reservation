@@ -23,12 +23,16 @@ router.post("/login", async (req, res) => {
     console.log("session user id : ", req.session.user);
     res.json({
       auth: true,
-      message: "successful login"
+      message: "successful login",
+      id : user.rows[0].id
     });
 
   } catch (err) {
     console.error(err.message);
-    res.status(500).send("Server error");
+    res.status(500).json({
+      auth : false,
+      message : "Server error"
+    });
   }
 });
 
@@ -39,7 +43,10 @@ router.post("/register", async (req, res) => {
     const { emailid, password, mobileno, dob } = req.body;
     users = await pool.query("select * from account where emailid = $1", [emailid]);
     if (users.rows.length !== 0) {
-      return res.status(401).json("user already exists");
+      return res.status(401).json({
+        success : false,
+        message : "User already exists"
+      });
     }
     await pool.query("Insert into account (emailid, password, mobileno, dob) values ($1,$2,$3,$4)", [emailid, password, mobileno, dob])
     return res.status(200).json({
@@ -47,7 +54,10 @@ router.post("/register", async (req, res) => {
     });
   } catch (err) {
     console.error(err.message);
-    return res.status(500).send("Server error");
+    return res.status(500).send({
+      success : false ,
+      message : err.message
+    });
   }
 })
 

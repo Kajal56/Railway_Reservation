@@ -180,7 +180,8 @@ BEGIN
     AND (filter_sp IS NULL OR c.sp = filter_sp)
     AND (filter_dp IS NULL OR c.dp = filter_dp)
     AND (filter_doj IS NULL OR c.doj = filter_doj)
-    AND (filter_class IS NULL OR c.class = filter_class);
+    AND (filter_class IS NULL OR c.class = filter_class)
+    AND (c.doj > CURRENT_DATE);
 
 END;
 $$ LANGUAGE plpgsql;

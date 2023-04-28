@@ -81,7 +81,7 @@ export default function MyBookings() {
             <th>Status</th>
             <th>Cancel Ticket</th>
           </tr>
-          {p_b.map((item, index) => (
+          {u_b.map((item, index) => (
             // {trains.map((item, index) => (
             <tr
               class="bg-slate-300 border-b dark:border-neutral-500"

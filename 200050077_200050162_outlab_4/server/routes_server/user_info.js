@@ -3,7 +3,6 @@ const pool = require("../utils/db")
 
 router.get("/user-info", async (req, res) => {
   try {
-
     if (req.session.user) {
       const id = req.session.user.id;
 

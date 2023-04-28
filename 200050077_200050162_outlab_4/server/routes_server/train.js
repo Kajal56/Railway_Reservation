@@ -3,7 +3,7 @@ const pool = require("../utils/db");
 
 router.post("/search-train", async (req, res) => {
   try {
-    console.log("accessed search-train");
+    // console.log("check 1");
     let { f_sp, f_dp, f_doj, f_class } = req.body;
     if (!f_sp) f_sp = null;
     if (!f_sp) f_sp = null;
@@ -12,10 +12,10 @@ router.post("/search-train", async (req, res) => {
       "SELECT * FROM filter_trains($1, $2, $3, $4 , $5)",
       [null, f_sp, f_dp, f_doj, f_class]
     ); //Wanted to search by tno but kept null because search by this is not needed.
-
+    console.log(filtered_trains.rows);
+    console.log("check 2");
     return res.status(200).json(filtered_trains.rows);
   } catch (error) {
-    console.log("Accessed search train");
     console.log(error);
     res.status(500).send("Server Error");
   }
@@ -23,21 +23,11 @@ router.post("/search-train", async (req, res) => {
 
 router.post("/pnr-search", async (req, res) => {
   try {
-    // if (req.session.user) {
-      const { pnr } = req.body;
+    const { pnr } = req.body;
 
-      const ticket = await pool.query("SELECT * FROM resv WHERE pnr = $1", [
-        pnr,
-      ]);
+    const ticket = await pool.query("SELECT * FROM resv WHERE pnr = $1", [pnr]);
 
-      return res.status(200).json(ticket.rows);
-    // } else {
-    //   return res.status(401).json({
-    //     auth: false,
-    //     message: "not authorized",
-    //     registration: false,
-    //   });
-    // }
+    return res.status(200).json(ticket.rows);
   } catch (error) {
     console.log(error);
     res.status(500).send("Server Error");

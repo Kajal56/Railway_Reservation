@@ -9,16 +9,21 @@ import PnrDetails from './components/PnrDetails' ;
 import Booking from "./components/Booking";
 import MyBookings from "./components/MyBookings";
 import Cancelling from "./components/CancelTicket";
+import UserInfo from "./components/UserInfo";
+import Login from "./components/Login";
+import Register from "./components/Registration";
 function App() {
 
     return (
       <Routes>
         <Route path ='/' element= {<Home/>}></Route>
+        <Route path ='/user-info' element= {<UserInfo/>}></Route>
         <Route path ='/booking' element= {<Booking/>}></Route>
         <Route path ='/my-bookings' element= {<MyBookings/>}></Route>
         <Route path ='/cancel-ticket' element= {<Cancelling/>}></Route>
         <Route path ='/home' element= {<Home/>}></Route>
-        <Route path ='/pnr' element= {<Pnr/>}>
+        <Route path ='/login' element= {<Login/>}></Route>
+        <Route path ='/register' element= {<Register/>}>
           <Route path=':in_pnr' element={<PnrDetails/>}></Route>
         </Route>
         <Route path ='/searches' element= {<Searches/>}></Route>

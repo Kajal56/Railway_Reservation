@@ -16,16 +16,6 @@ import AuthApi from '../utils/AuthApi';
 import { login } from './auth-api';
 import { useState, useContext } from 'react';
 
-// import { connect } from "react-redux";
-// import { Link } from "react-router-dom";
-// import { login } from "../actions/session";
-// const mapStateToProps = ({ errors }) => ({
-//   errors
-// });
-// const mapDispatchToProps = dispatch => ({
-//   login: user => dispatch(login(user))
-// });
-
 function Copyright(props) {
   return (
     <Typography variant="body2" color="text.secondary" align="center" {...props}>

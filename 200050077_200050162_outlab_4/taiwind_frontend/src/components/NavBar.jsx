@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import { animateScroll as scroll, } from 'react-scroll'
-import {NavLink} from 'react-router-dom' ;
+import {NavLink, useNavigate} from 'react-router-dom' ;
 
 import { MenuIcon, XIcon } from '@heroicons/react/outline';
 
@@ -9,6 +9,7 @@ const Navbar = () => {
     const handleClick = () => setIsnav(!isnav)
 
     const handleClose =()=> setIsnav(!isnav)
+    const navigate = useNavigate();
 
   return (
     <nav>
@@ -26,10 +27,10 @@ const Navbar = () => {
           </ul>
         </div>
         <div className='hidden md:flex pr-4'>
-          <button className='border-none bg-transparent text-black mr-4'>
-            Sign In
+          <button onClick={()=>{navigate('login')}} className='border-none bg-transparent text-black mr-4'>
+            Login
           </button>
-          <button className='px-8 py-3'>Sign Up</button>
+          <button onClick={()=>{navigate('register')}} className='px-8 py-3'>Register</button>
         </div>
         <div  onClick={handleClick}>
             {!isnav ? <MenuIcon className='w-5' /> : <XIcon className='w-5' />}
