@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import { animateScroll as scroll, } from 'react-scroll'
 import {NavLink, useNavigate} from 'react-router-dom' ;
+import { useAuth } from '../contexts/AuthContext';
 
 import { MenuIcon, XIcon } from '@heroicons/react/outline';
 
@@ -10,6 +11,18 @@ const Navbar = () => {
 
     const handleClose =()=> setIsnav(!isnav)
     const navigate = useNavigate();
+
+    ///----------------UseContext starts
+    const {
+      authUser,
+      setAuthUser,
+      isLoggedIn,
+      setIsLoggedIn
+    } = useAuth();
+    ///---------------UseContext ends 
+    const  handleLogOut= ()=>{
+        setIsLoggedIn(false) ;
+    }
 
   return (
     <nav>
@@ -26,12 +39,21 @@ const Navbar = () => {
           <li><NavLink className = {isnav ? 'hidden' : isnav} to="/pnr" smooth={true} offset={-50} duration={500}>Pnr</NavLink></li>
           </ul>
         </div>
+        {!isLoggedIn ?
         <div className='hidden md:flex pr-4'>
           <button onClick={()=>{navigate('login')}} className='border-none bg-transparent text-black mr-4'>
-            Login
-          </button>
-          <button onClick={()=>{navigate('register')}} className='px-8 py-3'>Register</button>
+            Sign In
+          </button> 
+          <button onClick={()=>{navigate('register')}} className='px-8 py-3'>Sign Up</button>
         </div>
+          :
+        <div className='hidden md:flex pr-4'>
+          <button onClick={()=>{handleLogOut()}} className='border-none bg-transparent text-black mr-4'>
+            Log Out
+          </button> 
+          <button onClick={()=>{handleLogOut()}} className='px-8 py-3'>Log Out</button>
+        </div>
+        }           {/* } */}
         <div  onClick={handleClick}>
             {!isnav ? <MenuIcon className='w-5' /> : <XIcon className='w-5' />}
           
@@ -45,10 +67,18 @@ const Navbar = () => {
           <li className='border-b-2 border-zinc-300 w-full'><NavLink onClick={handleClose} to="platforms" smooth={true} offset={-100} duration={500}>Platforms</NavLink></li>
           <li className='border-b-2 border-zinc-300 w-full'><NavLink onClick={handleClose} to="pricing" smooth={true} offset={-50} duration={500}>Pricing</NavLink></li>
 
+        {!isLoggedIn ?
         <div className='flex flex-col my-4'>
-            <button className='bg-transparent text-indigo-600 px-8 py-3 mb-4'>Sign In</button>
-            <button className='px-8 py-3'>Sign Up</button>
+            <button onClick={()=>{navigate('login')}} className='bg-transparent text-indigo-600 px-8 py-3 mb-4'>Sign In</button>
+            <button onClick={()=>{navigate('register')}} className='px-8 py-3'>Sign Up</button>
         </div>
+
+        :
+        <div>
+            <button  className='bg-transparent text-indigo-600 px-8 py-3 mb-4'>LogOut</button>
+
+        </div>
+        }
       </ul>
     </div>
     </nav>

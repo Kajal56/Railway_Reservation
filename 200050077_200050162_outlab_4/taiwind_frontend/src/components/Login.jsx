@@ -1,12 +1,22 @@
 import React, { useState } from 'react';
 import { login } from './auth-api';
 import { useNavigate } from 'react-router-dom';
+import { useAuth } from '../contexts/AuthContext';
 
 export default function Login() {
   const [emailid, setEmailid] = useState('');
   const [password, setPassword] = useState('');
   const [problem, setProblem] = useState(false) ;
   const  navigate = useNavigate();
+//-------useContext -----------
+  const {
+    authUser,
+    setAuthUser,
+    isLoggedIn,
+    setIsLoggedIn
+  } = useAuth();
+
+
   const handleSubmit = async (event) => {
     event.preventDefault();
     // res = login({})
@@ -16,26 +26,12 @@ export default function Login() {
     const res = await login(user);
     console.log(res);
     if(res.auth){
+      setIsLoggedIn(true);
         navigate('/');
     } else{
         setProblem(true) ;
-        // SpetErr()
     }
-
-    // fetch('/api/login', {
-    //   method: 'POST',
-    //   headers: {
-    //     'Content-Type': 'application/json'
-    //   },
-    //   body: JSON.stringify({ emailid, password })
-    // })
-    //   .then(response => response.json())
-    //   .then(data => console.log(data))
-    //   .catch(error => console.error(error));
   };
-//   return (
-//     // <div>Helllo</div>
-//   )
   return (
     <div className="bg-white rounded-lg shadow-lg p-6 mb-6">
       <h2 className="text-2xl font-bold mb-6">Login</h2>

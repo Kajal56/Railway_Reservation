@@ -3,3 +3,5 @@
  - options.allowedHosts[0] should be a non-empty string." 
    --------Due to internet problem.
 3) Got to see useEffect in SearchRes, at this point of time, we have to refresh before giving new input, but that should be corrected.
+4) have to change AuthApi according things in App.js :)
+5) have to clean App.js and move mess to some other file
