@@ -6,14 +6,14 @@ import {
   FaYoutubeSquare,
 } from "react-icons/fa";
 import { GiHamburgerMenu } from "react-icons/gi";
-import { check } from '../../components/auth-api';
+import { check } from '../auth-api';
 import { NavLink } from "react-router-dom";
 import AuthApi from "../../utils/AuthApi"
 import { BrowserRouter as Router, Route } from "react-router-dom"
 import RoutesPath from '../../routes/Routes';
 import { logout } from "../auth-api";
 
-const Navbar = () => {
+const Nav = () => {
 
   const [auth, setAuth] = useState(false);
   // const [user, setUser] = useState(null)
@@ -129,4 +129,4 @@ const Navbar = () => {
   );
 };
 
-export default Navbar;
+export default Nav;

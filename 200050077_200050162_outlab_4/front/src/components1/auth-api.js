@@ -2,6 +2,9 @@ async function login(user) {
   console.log(user);
   const response = await fetch("/auth/login", {
     method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
     body: JSON.stringify(user)
   });
   const json = await response.json();
@@ -12,6 +15,9 @@ async function register(user) {
   console.log(user);
   const response = await fetch("/auth/register", {
     method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
     body: JSON.stringify(user)
   });
   const json = await response.json();

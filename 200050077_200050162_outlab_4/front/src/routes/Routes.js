@@ -1,16 +1,16 @@
 import React, { useContext } from "react"
 import { Routes, Route, Navigate, Redirect } from 'react-router-dom';
-import Login from "../components/Login"
-import SignUp from "../components/Signup";
-import Home from "../components/Home";
-import Welcome from "../components/Welcome";
+import Login from "../components1/Login"
+import SignUp from "../components1/Signup";
+import Home from "../components1/Home";
+import Welcome from "../components1/Welcome";
 import AuthApi from "../utils/AuthApi";
-import RunningCourses from "../components/RunningCourses";
-import RunningCoursesDept from "../components/RunningCoursesDept";
-import CourseInfo from "../components/CourseInfo";
-import InstructorInfo from "../components/InstructorInfo";
-import AllInstructors from "../components/AllInstructors";
-import Registration from "../components/Registration";
+import RunningCourses from "../components1/RunningCourses";
+import RunningCoursesDept from "../components1/RunningCoursesDept";
+import CourseInfo from "../components1/CourseInfo";
+import InstructorInfo from "../components1/InstructorInfo";
+import AllInstructors from "../components1/AllInstructors";
+import Registration from "../components1/Registration";
 
 function RoutesPath() {
   const authApi = useContext(AuthApi)
