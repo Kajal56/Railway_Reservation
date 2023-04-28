@@ -1,6 +1,6 @@
 { 
-  "user" : "retro", 
-  "password": "1234", 
+  "user" : "postgres", 
+  "password": "kajal", 
   "host": "localhost", 
   "port": "5432", 
   "database": "project_db" 

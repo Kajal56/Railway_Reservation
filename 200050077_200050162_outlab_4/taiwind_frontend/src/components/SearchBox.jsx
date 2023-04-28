@@ -1,37 +1,28 @@
-import React, { useState } from 'react';
-import Link from 'react-router-dom';
-import Select from 'react-select';
-import Tabs from './Tabs';
-import NavBar from './NavBar';
+import React, { useEffect, useState } from 'react';
 import SearchRes from './SearchRes';
 
-import { MenuIcon, XIcon } from '@heroicons/react/outline';
-import Dropdown from './Dropdown.jsx';    //why the hell ?
-import Example from './Tabs';
-
 const SearchBox = () => {
-    const [source, setSource] = useState("");
-    const [destination, setDestination] = useState("");
-    const [date, setDate] = useState("12-02-1992");
-    const [selectedClass, setSelectedClass] = useState('CLASS');
+    const [source, setSource] = useState(null);
+    const [destination, setDestination] = useState(null);
+    const [date, setDate] = useState(null);
+    const [selectedClass, setSelectedClass] = useState(null);
     const [search, setSearch] = useState(false);
 // 
-    const [sp, setSp] = useState("");
-    const [dp, setDp] = useState("");
-    const [doj, setDoj] = useState("12-02-1992");
-    const [selclass, setSelclass] = useState('CLASS');
+    const [sp, setSp] = useState(null);
+    const [dp, setDp] = useState(null);
+    const [doj, setDoj] = useState(null);
+    const [selclass, setSelclass] = useState(null);
 
 
 const handleClick = async () => {
-        // call the backend api to display data
-        // setSearch(true) ;
+        setSearch(false);
         setSearch(true) ;
         setDoj(date) ;
         setDp(destination) ;
         setSp(source) ;
         setSelclass(selectedClass) ;
     }
-
+    
     return (
         // <div className="h-64 bg-gradient-to-r from-[#0f1f47] to-[#5f6984] p-2">
         <div className='bg-slate-00'>
@@ -108,7 +99,6 @@ const handleClick = async () => {
                     </div>
                 </div>
                 {search ?  <SearchRes  f_sp = {sp} f_dp ={dp} f_class={selclass} f_doj={doj}/> : <h2>Select some parameters</h2>}
-                {/* <SearchRes  f_sp = {sp} f_dp ={dp} f_class={selclass} f_doj={doj}/> */}
             </div>
         </div>
 

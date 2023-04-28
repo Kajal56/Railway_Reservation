@@ -1,0 +1,5 @@
+1) in my-bookings, at both places, past_bookings has been written because we don't have data for future dates, have to fix this. by adding advance dates to the database (in classeats basically) and then booking. (ughhh)
+2) "Invalid options object. Dev Server has been initialized using an options object that does not match the API schema.
+ - options.allowedHosts[0] should be a non-empty string." 
+   --------Due to internet problem.
+3) Got to see useEffect in SearchRes, at this point of time, we have to refresh before giving new input, but that should be corrected.

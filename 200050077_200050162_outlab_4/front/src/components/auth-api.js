@@ -43,10 +43,13 @@ async function getRefunds() {
 async function searchTrain(train) {
   const response = await fetch("/api/search-train", {
     method: "POST",
-    body: JSON.stringify(train)
+    body: JSON.stringify(train),
+    headers: {
+      "Content-Type": "application/json"
+    }
   });
   const json = await response.json();
-  console.log(json);
+  // console.log(json);
   return json;
 }
 
