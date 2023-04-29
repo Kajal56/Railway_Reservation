@@ -1,5 +1,6 @@
 const router = require('express').Router()
-const pool = require("../utils/db")
+const pool = require("../utils/db");
+const { route } = require('./booking');
 
 router.get("/user-info", async (req, res) => {
   try {
@@ -10,7 +11,10 @@ router.get("/user-info", async (req, res) => {
         id
       ]);
 
-      return res.status(200).json(user.rows)
+      return res.status(200).json({
+        auth : true,
+        user : user.rows[0]
+      })
     } else {
       return res.status(401).json({
         auth: false,
@@ -23,6 +27,8 @@ router.get("/user-info", async (req, res) => {
     res.status(500).send("Server error");
   }
 })
+
+route
 
 
 module.exports = router;

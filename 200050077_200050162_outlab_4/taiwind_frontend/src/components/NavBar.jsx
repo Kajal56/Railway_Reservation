@@ -11,8 +11,6 @@ const Navbar = () => {
 
     const handleClose =()=> setIsnav(!isnav)
     const navigate = useNavigate();
-
-    ///----------------UseContext starts
     const {
       authUser,
       setAuthUser,
@@ -23,7 +21,6 @@ const Navbar = () => {
     const  handleLogOut= ()=>{
         setIsLoggedIn(false) ;
     }
-
   return (
     <nav>
     <div className='w-screen h-[80px] z-10 bg-zinc-200 fixed drop-shadow-lg'>

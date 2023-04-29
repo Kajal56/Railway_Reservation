@@ -1,11 +1,6 @@
 import React, {useState} from 'react';
 
 const searchBox = () => {
-    // const [nav, setNav] = useState(false)
-    // const handleClick = () => setNav(!nav)
-
-    // const handleClose =()=> setNav(!nav)
-    // const [location, setLocation] = useState("");
 
 (
     <div className="w-[27%] relative text-reg">

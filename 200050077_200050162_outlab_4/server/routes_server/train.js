@@ -8,6 +8,7 @@ router.post("/search-train", async (req, res) => {
     if (!f_sp) f_sp = null;
     if (!f_sp) f_sp = null;
     if (f_class == "ANY") f_class = null;
+    console.log(req.body);
     const filtered_trains = await pool.query(
       "SELECT * FROM filter_trains($1, $2, $3, $4 , $5)",
       [null, f_sp, f_dp, f_doj, f_class]

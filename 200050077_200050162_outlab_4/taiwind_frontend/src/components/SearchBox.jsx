@@ -6,7 +6,7 @@ const SearchBox = () => {
     const [destination, setDestination] = useState(null);
     const [date, setDate] = useState(null);
     const [selectedClass, setSelectedClass] = useState(null);
-    const [search, setSearch] = useState(false);
+    const [search, setSearch] = useState(0);
 // 
     const [sp, setSp] = useState(null);
     const [dp, setDp] = useState(null);
@@ -15,13 +15,17 @@ const SearchBox = () => {
 
 
 const handleClick = async () => {
-        setSearch(false);
-        setSearch(true) ;
+        setSearch(search+1);
+        // setSearch(true) ;
         setDoj(date) ;
         setDp(destination) ;
         setSp(source) ;
         setSelclass(selectedClass) ;
     }
+    useEffect(() => {
+        // f_trains(train);
+      }, []);
+    
     
     return (
         // <div className="h-64 bg-gradient-to-r from-[#0f1f47] to-[#5f6984] p-2">
@@ -95,10 +99,10 @@ const handleClick = async () => {
                                 Search
                             </button>
                         </div>
-                        {search}
+                        {/* {search} */}
                     </div>
                 </div>
-                {search ?  <SearchRes  f_sp = {sp} f_dp ={dp} f_class={selclass} f_doj={doj}/> : <h2>Select some parameters</h2>}
+                {search ? <div key={search}> <SearchRes f_sp = {sp} f_dp ={dp} f_class={selclass} f_doj={doj}/> </div> : <h2>Select some parameters</h2>}
             </div>
         </div>
 
