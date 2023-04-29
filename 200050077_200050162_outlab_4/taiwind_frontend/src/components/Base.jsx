@@ -3,7 +3,7 @@ import Home from './Home';
 import Booking from "./Booking";
 import MyBookings from "./MyBookings";
 import Cancelling from "./CancelTicket";
-import UserInfo from "./UserInfo";
+import InfoUser from "./UserInfo";
 import Login from "./Login";
 import Register from "./Registration";
 import { useAuth } from '../contexts/AuthContext';
@@ -19,7 +19,7 @@ function Base() {
         isLoggedIn ? (
           <Routes>
             <Route path ='/' element= {<Home/>}></Route>
-            <Route path ='/user-info' element= {<UserInfo/>}></Route>
+            <Route path ='/user-info' element= {<InfoUser/>}></Route>
             <Route path ='/booking' element= {<Booking/>}></Route>
             <Route path ='/my-bookings' element= {<MyBookings/>}></Route>
             <Route path ='/cancel-ticket' element= {<Cancelling/>}></Route>

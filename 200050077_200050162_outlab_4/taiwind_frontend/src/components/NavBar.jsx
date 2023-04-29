@@ -31,9 +31,9 @@ const Navbar = () => {
           </NavLink>
           <ul className={'hidden md:flex'}>
           <li><NavLink className = {isnav ? 'hidden' : isnav} to="/my-bookings" smooth={true} offset={-200} duration={500}>My bookings</NavLink></li>
-          <li><NavLink className = {isnav ? 'hidden' : isnav} to="/about-you" smooth={true} offset={-100} duration={500}>About You</NavLink></li>
+          <li><NavLink className = {isnav ? 'hidden' : isnav} to="/user-info" smooth={true} offset={-100} duration={500}>About You</NavLink></li>
           <li><NavLink className = {isnav ? 'hidden' : isnav} to="/contact-us" smooth={true} offset={-50} duration={500}>Contact Us</NavLink></li>
-          <li><NavLink className = {isnav ? 'hidden' : isnav} to="/pnr" smooth={true} offset={-50} duration={500}>Pnr</NavLink></li>
+          <li><NavLink className = {isnav ? 'hidden' : isnav} to="/pnr" smooth={true} offset={-50} duration={500}>PNR Search</NavLink></li>
           </ul>
         </div>
         {!isLoggedIn ?
@@ -56,9 +56,9 @@ const Navbar = () => {
 
       <ul className={!isnav ? 'hidden' : 'absolute bg-zinc-200 w-full px-8'}>
           <li className='border-b-2 border-zinc-300 w-full'><NavLink onClick={handleClose} to="home" smooth={true} duration={500}>Home</NavLink></li>
-          <li className='border-b-2 border-zinc-300 w-full'><NavLink onClick={handleClose} to="about" smooth={true} offset={-200} duration={500}>About</NavLink></li>
-          <li className='border-b-2 border-zinc-300 w-full'><NavLink onClick={handleClose} to="support" smooth={true} offset={-50} duration={500}>Support</NavLink></li>
-          <li className='border-b-2 border-zinc-300 w-full'><NavLink onClick={handleClose} to="platforms" smooth={true} offset={-100} duration={500}>Platforms</NavLink></li>
+          <li className='border-b-2 border-zinc-300 w-full'><NavLink onClick={handleClose} to="user-info" smooth={true} offset={-200} duration={500}>About You</NavLink></li>
+          <li className='border-b-2 border-zinc-300 w-full'><NavLink onClick={handleClose} to="about-us" smooth={true} offset={-50} duration={500}>About Us</NavLink></li>
+          <li className='border-b-2 border-zinc-300 w-full'><NavLink onClick={handleClose} to="pnr" smooth={true} offset={-100} duration={500}>PNR search</NavLink></li>
 
         {!isLoggedIn ?
         <div className='flex flex-col my-4'>
