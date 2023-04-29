@@ -30,13 +30,17 @@ BEGIN
     FROM classseats 
     WHERE trainno = in_trainno AND sp = in_sp AND dp = in_dp AND class = in_class;
 
-    IF available_seats >= in_nos THEN
+    IF available_seats > 0 THEN
         INSERT INTO resv (id,trainno, sp, dp, doj, tfare, class, nos, status) 
         VALUES (in_id, in_trainno, in_sp, in_dp, in_doj, in_nos*one_fare, in_class, in_nos, 'BOOKED');
     ELSE
         INSERT INTO resv (id ,trainno, sp, dp, doj, tfare, class, nos, status) 
         VALUES (in_id ,in_trainno, in_sp, in_dp, in_doj, in_nos*one_fare, in_class, in_nos, 'WAITING');
     END IF;
+    UPDATE classseats 
+    set seatsleft = seatsleft - 1
+    WHERE trainno = in_trainno AND sp = in_sp AND dp = in_dp AND class = in_class;
+
 END;
 $$ LANGUAGE plpgsql;
 
@@ -119,7 +123,7 @@ BEGIN
             );
         else
             UPDATE classseats
-            SET seatsleft = seatsleft - 1
+            SET seatsleft = seatsleft +1 
             WHERE trainno = var_trainno
             AND sp = var_sp
             AND dp = var_dp
@@ -180,8 +184,8 @@ BEGIN
     AND (filter_sp IS NULL OR c.sp = filter_sp)
     AND (filter_dp IS NULL OR c.dp = filter_dp)
     AND (filter_doj IS NULL OR c.doj = filter_doj)
-    AND (filter_class IS NULL OR c.class = filter_class)
-    AND (c.doj > CURRENT_DATE);
+    AND (filter_class IS NULL OR c.class = filter_class);
+    -- AND (c.doj > CURRENT_DATE);
 
 END;
 $$ LANGUAGE plpgsql;

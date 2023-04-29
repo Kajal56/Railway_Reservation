@@ -20,19 +20,82 @@ export default function Cancelling() {
     //   setTrains(res);
       console.log(res);
       setIsCancelled(true) ;
-      const result = searchPnr(cancelling_dict) ;
-      setUpdatedTic(res) ;
+      const result = await searchPnr(cancelling_dict) ;
+      setUpdatedTic(result) ;
     //   setBookingDetails(res) ;
     } catch (err) {
       console.log(err.message);
     }
   };
 
-//   return (
-//     <div>
-//     Hiii
-//     </div>
-//   );
+  return (
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="py-8">
+        <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
+          <div class="px-4 py-5 sm:p-6">
+            <h3 class="text-lg leading-6 font-medium text-gray-900 mb-4">
+              Your Selection
+            </h3>
+            <div class="w-full overflow-x-auto">
+              <table class="w-full whitespace-no-wrap">
+                <thead>
+                  <tr class="text-xs font-semibold tracking-wide text-left text-gray-500 uppercase border-b bg-gray-50">
+                    <th class="px-4 py-3">Source </th>
+                    <th class="px-4 py-3">{cancelling_dict.sp}</th>
+                  </tr>
+                </thead>
+                <tbody class="bg-white divide-y">
+                  <tr class="text-gray-700">
+                    <td class="px-4 py-3">Destination</td>
+                    <td class="px-4 py-3">{cancelling_dict.dp}</td>
+                  </tr>
+                  <tr class="text-gray-700">
+                    <td class="px-4 py-3">Date of Journey</td>
+                    <td class="px-4 py-3">{cancelling_dict.doj}</td>
+                  </tr>
+                  <tr class="text-gray-700">
+                    <td class="px-4 py-3">Class</td>
+                    <td class="px-4 py-3">{cancelling_dict.j_class}</td>
+                  </tr>
+                  <tr class="text-gray-700">
+                    <td class="px-4 py-3">Train Number</td>
+                    <td class="px-4 py-3">{cancelling_dict.trainno}</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="mt-6 flex justify-end">
+              <button
+                onClick={cancel}
+                class={isCancelled ? "hidden":"px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-green-700 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" }
+              >
+                Cancel Ticket
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+      {
+        <div className={!isCancelled ? "hidden" : "absolute bg-zinc-200 px-8"}>
+          <div class="mt-8 pb-2 mr-8">
+            <div class="mb-2 text-lg font-medium text-gray-900">
+              Your PNR is
+            </div>
+            <div class="mb-4 text-xl font-bold text-indigo-600">
+              {updatedTic.pnr}
+            </div>
+
+            <div class="mb-2 text-lg font-medium text-gray-900">
+              And ticket status is
+            </div>
+            <div class="text-xl font-bold text-green-600">
+              {updatedTic.status}
+            </div>
+          </div>
+        </div>
+      }
+    </div>
+  );
   return (
     <div className="justify-center">
       {/* <h1>

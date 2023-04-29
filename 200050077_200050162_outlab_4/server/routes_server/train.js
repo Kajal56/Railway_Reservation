@@ -25,10 +25,11 @@ router.post("/search-train", async (req, res) => {
 router.post("/pnr-search", async (req, res) => {
   try {
     const { pnr } = req.body;
+    console.log("Check 1");
 
     const ticket = await pool.query("SELECT * FROM resv WHERE pnr = $1", [pnr]);
-
-    return res.status(200).json(ticket.rows);
+    console.log(ticket.rows);
+    return res.status(200).json(ticket.rows[0]);
   } catch (error) {
     console.log(error);
     res.status(500).send("Server Error");

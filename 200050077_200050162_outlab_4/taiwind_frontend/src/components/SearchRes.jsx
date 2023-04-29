@@ -46,6 +46,7 @@ export default function SearchRes(props) {
           <th>class_sp</th>
           <th>class_dp</th>
           <th>class</th>
+          <th>Seats Left</th>
         </tr>
         {trains.map((item, index) => (
           <tr class="" key={index}>
@@ -70,6 +71,7 @@ export default function SearchRes(props) {
             <td class="whitespace-nowrap px-6 py-4">{item.classseats_sp}</td>
             <td class="whitespace-nowrap px-6 py-4">{item.classseats_dp}</td>
             <td class="whitespace-nowrap px-6 py-4">{item.class}</td>
+            <td class="whitespace-nowrap px-6 py-4">{item.seatsleft}</td>
           </tr>
         ))}
       </tbody>

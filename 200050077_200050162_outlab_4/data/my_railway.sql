@@ -121,6 +121,7 @@ INSERT INTO classseats (trainno, sp, dp, doj, class, fare, seatsleft) VALUES
 (18, 'Chandigarh', 'Jaipur', '2023-05-12', 'AC3', 1700, 20),
 (18, 'Chandigarh', 'Jaipur', '2023-05-12', 'CC', 750, 120),
 (18, 'Jaipur', 'Delhi', '2023-05-12', 'AC1', 2750, 4) ;  --This is for checking for waiting list. which is to be done later :))
+(18, 'Kolkata', 'Lucknow', '2023-04-03', 'SL', 2750, 4) ;  --This is for checking for waiting list. which is to be done later :))
 -------Really got to see the database and edit it :/
 
 -- --------------------------------------------------------

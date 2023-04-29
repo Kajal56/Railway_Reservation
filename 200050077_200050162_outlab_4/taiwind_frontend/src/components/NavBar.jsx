@@ -31,8 +31,8 @@ const Navbar = () => {
           </NavLink>
           <ul className={'hidden md:flex'}>
           <li><NavLink className = {isnav ? 'hidden' : isnav} to="/my-bookings" smooth={true} offset={-200} duration={500}>My bookings</NavLink></li>
-          <li><NavLink className = {isnav ? 'hidden' : isnav} to="/refund-history" smooth={true} offset={-100} duration={500}>Refund History</NavLink></li>
-          <li><NavLink className = {isnav ? 'hidden' : isnav} to="/support" smooth={true} offset={-50} duration={500}>Support</NavLink></li>
+          <li><NavLink className = {isnav ? 'hidden' : isnav} to="/about-you" smooth={true} offset={-100} duration={500}>About You</NavLink></li>
+          <li><NavLink className = {isnav ? 'hidden' : isnav} to="/contact-us" smooth={true} offset={-50} duration={500}>Contact Us</NavLink></li>
           <li><NavLink className = {isnav ? 'hidden' : isnav} to="/pnr" smooth={true} offset={-50} duration={500}>Pnr</NavLink></li>
           </ul>
         </div>
@@ -45,10 +45,7 @@ const Navbar = () => {
         </div>
           :
         <div className='hidden md:flex pr-4'>
-          <button onClick={()=>{handleLogOut()}} className='border-none bg-transparent text-black mr-4'>
-            Log Out
-          </button> 
-          <button onClick={()=>{handleLogOut()}} className='px-8 py-3'>Log Out</button>
+          <button onClick={()=>{handleLogOut()}} className='bg-slate-500 ml-3 px-8 py-3'>Log Out</button>
         </div>
         }           {/* } */}
         <div  onClick={handleClick}>
@@ -62,7 +59,6 @@ const Navbar = () => {
           <li className='border-b-2 border-zinc-300 w-full'><NavLink onClick={handleClose} to="about" smooth={true} offset={-200} duration={500}>About</NavLink></li>
           <li className='border-b-2 border-zinc-300 w-full'><NavLink onClick={handleClose} to="support" smooth={true} offset={-50} duration={500}>Support</NavLink></li>
           <li className='border-b-2 border-zinc-300 w-full'><NavLink onClick={handleClose} to="platforms" smooth={true} offset={-100} duration={500}>Platforms</NavLink></li>
-          <li className='border-b-2 border-zinc-300 w-full'><NavLink onClick={handleClose} to="pricing" smooth={true} offset={-50} duration={500}>Pricing</NavLink></li>
 
         {!isLoggedIn ?
         <div className='flex flex-col my-4'>
@@ -72,7 +68,8 @@ const Navbar = () => {
 
         :
         <div>
-            <button  className='bg-transparent text-indigo-600 px-8 py-3 mb-4'>LogOut</button>
+            {/* <button  className='bg-transparent text-indigo-600 px-8 py-3 mb-4'>LogOut</button> */}
+            <button  className='bg-slate-600 text-indigo-600 px-8 py-3 mb-4'>LogOut</button>
 
         </div>
         }

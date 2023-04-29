@@ -42,7 +42,7 @@ const handleClick = async () => {
                             <input
                                 className="rounded  mr-3 p-2 w-[450px]"
                                 type="text"
-                                placeholder="State, city or town"
+                                placeholder="Source City"
                                 value={source}
                                 onChange={(e) => setSource(e.target.value)}
                             />
@@ -51,7 +51,7 @@ const handleClick = async () => {
                             <input
                                 className="rounded  mr-3 p-2 w-[450px]"
                                 type="text"
-                                placeholder="State, city or town"
+                                placeholder="Destination City"
                                 value={destination}
                                 onChange={(e) => setDestination(e.target.value)}
 
@@ -70,8 +70,6 @@ const handleClick = async () => {
                             <br />
                             <br />
                             <div className='ml-3 mr-3'>
-                                {/* <Dropdown></Dropdown> */}
-
                                 <div className="flex justify-between">
                                     <p className='ml-3 self-center'>Select journey date :</p>
                                     <select className='m1-auto mr-3 self-center'
@@ -84,7 +82,7 @@ const handleClick = async () => {
                                         <option value="CC">CC</option>
                                         <option value="EC">EC</option>
                                         <option value="SL">SL</option>
-                                        <option value="SL">ANY</option>
+                                        <option value="ANY">ANY</option>
                                     </select>
                                 </div>
 
