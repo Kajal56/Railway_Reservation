@@ -9,13 +9,22 @@ export function useAuth(){
 
 
 export function AuthProvider(props){
-    const [authUser , setAuthUSer] = useState("Kajal");
+    const [authUser , setAuthUser] = useState({});
     const [isLoggedIn , setIsLoggedIn] = useState(false);
-    const checkLogin = async (train) => {
+    const checkLogin = async () => {
       try {
         const res = await userInfo();
+        console.log("AuthContext : " ,res);  //Why does this thing give problem some times
         setIsLoggedIn(res.auth) ;
-        console.log(res);
+        if(isLoggedIn){
+          setAuthUser(res.user);
+        }
+        else{
+          setAuthUser(null);
+        }
+        console.log("AuthContext : Res", res)
+        console.log("AuthContext : authUser", authUser);
+        console.log("AuthContext : isLoggedIn", isLoggedIn);
       } catch (err) {
         console.log(err.message);
       }
@@ -27,7 +36,7 @@ export function AuthProvider(props){
 
     const value = {
         authUser,
-        setAuthUSer,
+        setAuthUser,
         isLoggedIn,
         setIsLoggedIn
     }

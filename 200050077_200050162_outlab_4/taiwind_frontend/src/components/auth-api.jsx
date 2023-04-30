@@ -1,5 +1,5 @@
 async function login(user) {
-    console.log(user);
+    // console.log(user);
     const response = await fetch("/auth/login", {
       method: "POST",
       body: JSON.stringify(user),
@@ -80,7 +80,7 @@ async function login(user) {
       method: "GET",
     });
     const json = await response.json();
-    console.log(json);
+    // console.log(json);
     return json;
   }
   

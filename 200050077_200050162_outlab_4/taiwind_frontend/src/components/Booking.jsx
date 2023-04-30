@@ -63,7 +63,11 @@ export default function Booking() {
             <div class="mt-6 flex justify-end">
               <button
                 onClick={book}
-                class={isBooked ? "hidden" :"px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-green-700 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"}
+                class={
+                  isBooked
+                    ? "hidden"
+                    : "px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-green-700 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                }
               >
                 Confirm Ticket
               </button>

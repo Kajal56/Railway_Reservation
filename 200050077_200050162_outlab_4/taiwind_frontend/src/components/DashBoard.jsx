@@ -3,21 +3,21 @@ import { useAuth } from "../contexts/AuthContext";
 export default function DashBoard(){
     const  {
         authUser,
-        setAuthUSer,
+        setAuthUser,
         isLoggedIn,
         setIsLoggedIn
     } = useAuth() ;
     const logIn = (e)=>{
         e.preventDefault();
         setIsLoggedIn(true);
-        setAuthUSer({
+        setAuthUser({
             name : "Kajal"
         })
     }
     const logOut = (e)=>{
         e.preventDefault();
         setIsLoggedIn(false);
-        setAuthUSer(null);
+        setAuthUser(null);
     }
     return(
         <>

@@ -24,6 +24,7 @@ import { Link } from "react-router-dom";
 export default function MyBookings() {
   //   const [bookings, setBookings] = useState({});
   //   const trains = [3,5,6,7] ;
+  const train = "train";
   const [p_b, setPb] = useState([]);
   const [u_b, setUb] = useState([]);
   const navigate = useNavigate();
@@ -45,26 +46,105 @@ export default function MyBookings() {
     localStorage.setItem("j_class", j_class);
   };
 
-  const handleCancel = async (tno, sp, dp, doj, j_class , pnr) => {
+  const handleCancel = async (tno, sp, dp, doj, j_class, pnr) => {
     console.log("Check 1");
-    console.log(tno, sp, dp, doj, j_class , pnr, "handleCancel function")
+    console.log(tno, sp, dp, doj, j_class, pnr, "handleCancel function");
     localStorage.setItem("c_trainno", tno);
     localStorage.setItem("c_sp", sp);
     localStorage.setItem("c_dp", dp);
     localStorage.setItem("c_doj", doj);
     localStorage.setItem("c_j_class", j_class);
-    localStorage.setItem("c_pnr" , pnr) ;
+    localStorage.setItem("c_pnr", pnr);
     console.log("Check 2");
-    navigate('/cancel-ticket') ;
-    console.log("Check 3") ;
-
+    navigate("/cancel-ticket");
+    console.log("Check 3");
   };
-
 
   useEffect(() => {
     getMyBookings();
   }, []);
-  //   return ;
+  return (
+    <div class="w-full overflow-x-auto">
+      <h1 className="text-center">Your Upcoming Journeys </h1>
+      <table class="w-full whitespace-no-wrap">
+        <thead>
+          <tr class="text-xs font-semibold tracking-wide text-left text-gray-500 uppercase border-b bg-gray-50">
+            <th class="px-4 py-3">PNR</th>
+            <th class="px-4 py-3">Source</th>
+            <th class="px-4 py-3">Destination</th>
+            <th class="px-4 py-3">Date of Journey</th>
+            <th class="px-4 py-3">Class</th>
+            <th class="px-4 py-3">Train Number</th>
+            <th class="px-4 py-3">Status</th>
+            <th class="px-4 py-3">Cancel (?)</th>
+          </tr>
+        </thead>
+        <tbody class="bg-white divide-y">
+          {u_b.map((item, index) => (
+            <tr class="text-gray-700">
+              <td class="px-4 py-3">{item.pnr}</td>
+              <td class="px-4 py-3">{item.sp}</td>
+              <td class="px-4 py-3">{item.dp}</td>
+              <td class="px-4 py-3">{item.doj}</td>
+              <td class="px-4 py-3">{item.class}</td>
+              <td class="px-4 py-3">{item.trainno}</td>
+              <td class="px-4 py-3">{item.status}</td>
+              <td>
+                <button
+                  className={
+                    item.status == "CANCELLED"
+                      ? "hidden"
+                      : "inline-block rounded bg-blue-500 px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-primary-700 transition duration-150 ease-in-out hover:bg-primary-accent-100 focus:bg-primary-accent-100 focus:outline-none focus:ring-0 active:bg-primary-accent-200"
+                  }
+                  onClick={() => {
+                    console.log("Heyyy, I'm clicked");
+                    handleCancel(
+                      item.trainno,
+                      item.sp,
+                      item.dp,
+                      item.doj,
+                      item.class,
+                      item.pnr
+                    );
+                  }}
+                >
+                  Cancel Ticket
+                </button>
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+{/*-----------------------Saperator------------------------------------------------- -----------------------------*/}
+<h1 className="text-center">Your Previous Journeys </h1>
+      <table class="w-full whitespace-no-wrap">
+        <thead>
+          <tr class="text-xs font-semibold tracking-wide text-left text-gray-500 uppercase border-b bg-gray-50">
+            <th class="px-4 py-3">PNR</th>
+            <th class="px-4 py-3">Source</th>
+            <th class="px-4 py-3">Destination</th>
+            <th class="px-4 py-3">Date of Journey</th>
+            <th class="px-4 py-3">Class</th>
+            <th class="px-4 py-3">Train Number</th>
+          </tr>
+        </thead>
+        <tbody class="bg-white divide-y">
+          {p_b.map((item, index) => (
+            <tr class="text-gray-700">
+              <td class="px-4 py-3">{item.pnr}</td>
+              <td class="px-4 py-3">{item.sp}</td>
+              <td class="px-4 py-3">{item.dp}</td>
+              <td class="px-4 py-3">{item.doj}</td>
+              <td class="px-4 py-3">{item.class}</td>
+              <td class="px-4 py-3">{item.trainno}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+
+    </div>
+  );
+
   return (
     <div className="App">
       {/*Saperator */}
@@ -95,7 +175,100 @@ export default function MyBookings() {
               <td class="whitespace-nowrap px-6 py-4">{item.trainno}</td>
               <td class="whitespace-nowrap px-6 py-4">{item.status}</td>
               <td>
-                <button className={ (item.status =='CANCELLED') ? 'hidden' : 'inline-block rounded bg-blue-500 px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-primary-700 transition duration-150 ease-in-out hover:bg-primary-accent-100 focus:bg-primary-accent-100 focus:outline-none focus:ring-0 active:bg-primary-accent-200'}
+                <button
+                  className={
+                    item.status == "CANCELLED"
+                      ? "hidden"
+                      : "inline-block rounded bg-blue-500 px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-primary-700 transition duration-150 ease-in-out hover:bg-primary-accent-100 focus:bg-primary-accent-100 focus:outline-none focus:ring-0 active:bg-primary-accent-200"
+                  }
+                  onClick={() => {
+                    console.log("Heyyy, I'm clicked");
+                    handleCancel(
+                      item.trainno,
+                      item.sp,
+                      item.dp,
+                      item.doj,
+                      item.class,
+                      item.pnr
+                    );
+                  }}
+                >
+                  Cancel Ticket
+                </button>
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </div>
+      <hr />
+      <hr />
+      <div>
+        <h2>Past Bookings</h2>
+        <tbody>
+          <tr>
+            <th>PNR</th>
+            <th>class_sp</th>
+            <th>class_dp</th>
+            <th>Date of journey</th>
+            <th>Class</th>
+            <th>Train number</th>
+          </tr>
+          {p_b.map((item, index) => (
+            // {trains.map((item, index) => (
+            <tr
+              class="bg-slate-300 border-b dark:border-neutral-500"
+              key={index}
+            >
+              <td class="whitespace-nowrap px-6 py-4 ">{item.pnr}</td>
+              <td class="whitespace-nowrap px-6 py-4 ">{item.sp}</td>
+              <td class="whitespace-nowrap px-6 py-4">{item.dp}</td>
+              <td class="whitespace-nowrap px-6 py-4">{item.doj}</td>
+              <td class="whitespace-nowrap px-6 py-4">{item.class}</td>
+              <td class="whitespace-nowrap px-6 py-4">{item.trainno}</td>
+            </tr>
+          ))}
+        </tbody>
+      </div>
+    </div>
+  );
+
+  //----------------------------Recoverability purposes :
+  return (
+    <div className="App">
+      {/*Saperator */}
+      <div>
+        <h2>Upcoming bookings</h2>
+        <tbody>
+          <tr>
+            <th>PNR</th>
+            <th>class_sp</th>
+            <th>class_dp</th>
+            <th>doj</th>
+            <th>class</th>
+            <th>Train number</th>
+            <th>Status</th>
+            <th>Cancel Ticket</th>
+          </tr>
+          {u_b.map((item, index) => (
+            // {trains.map((item, index) => (
+            <tr
+              class="bg-slate-300 border-b dark:border-neutral-500"
+              key={index}
+            >
+              <td class="whitespace-nowrap px-6 py-4 ">{item.pnr}</td>
+              <td class="whitespace-nowrap px-6 py-4 ">{item.sp}</td>
+              <td class="whitespace-nowrap px-6 py-4">{item.dp}</td>
+              <td class="whitespace-nowrap px-6 py-4">{item.doj}</td>
+              <td class="whitespace-nowrap px-6 py-4">{item.class}</td>
+              <td class="whitespace-nowrap px-6 py-4">{item.trainno}</td>
+              <td class="whitespace-nowrap px-6 py-4">{item.status}</td>
+              <td>
+                <button
+                  className={
+                    item.status == "CANCELLED"
+                      ? "hidden"
+                      : "inline-block rounded bg-blue-500 px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-primary-700 transition duration-150 ease-in-out hover:bg-primary-accent-100 focus:bg-primary-accent-100 focus:outline-none focus:ring-0 active:bg-primary-accent-200"
+                  }
                   onClick={() => {
                     console.log("Heyyy, I'm clicked");
                     // console.log(
@@ -115,7 +288,6 @@ export default function MyBookings() {
                       item.class,
                       item.pnr
                     );
-  
                   }}
                 >
                   Cancel Ticket

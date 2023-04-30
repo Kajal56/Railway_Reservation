@@ -4,6 +4,7 @@ import {NavLink, useNavigate} from 'react-router-dom' ;
 import { useAuth } from '../contexts/AuthContext';
 
 import { MenuIcon, XIcon } from '@heroicons/react/outline';
+import { logout } from './auth-api';
 
 const Navbar = () => {
     const [isnav, setIsnav] = useState(false)
@@ -18,8 +19,11 @@ const Navbar = () => {
       setIsLoggedIn
     } = useAuth();
     ///---------------UseContext ends 
-    const  handleLogOut= ()=>{
+    const  handleLogOut= async ()=>{
+        const res = await logout();
         setIsLoggedIn(false) ;
+        setAuthUser(null);
+        console.log(res);
     }
   return (
     <nav>

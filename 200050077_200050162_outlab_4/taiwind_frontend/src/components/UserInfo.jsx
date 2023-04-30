@@ -1,17 +1,38 @@
 import { useState, useEffect } from "react";
 import { login, register, userInfo } from "../components/auth-api";
+import { useAuth } from "../contexts/AuthContext";
 
 export default function InfoUser() {
   const [info, setInfo] = useState({});
-  // const []
-  useEffect(() => {
-    async function fetchData() {
+  
+  const {
+    authUser,
+    setAuthUser,
+    isLoggedIn,
+    setIsLoggedIn
+  } = useAuth();
+  // console.log(isLoggedIn);
+  // const navigate = useNavigate();
+  const getInfo = async () => {
+    try {
+      // setTrains([]);
       const res = await userInfo();
-      console.log(res);
       setInfo(res);
+      console.log(res);
+    } catch (err) {
+      console.log(err.message);
     }
-    fetchData();
+  };
+
+  useEffect(() => {
+    getInfo();
   }, []);
+
+  // return (
+  //   <div>
+  //     Hellllo
+  //   </div>
+  // ) ;
 
   return (
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
