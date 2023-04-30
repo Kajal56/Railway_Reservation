@@ -69,20 +69,20 @@ const handleClick = async () => {
                             />
                             <br />
                             <br />
-                            <div className='ml-3 mr-3'>
+                            <div className='ml-3 mr-3 w-[450px]'>
                                 <div className="flex justify-between">
                                     <p className='ml-3 self-center'>Select journey date :</p>
                                     <select className='m1-auto mr-3 self-center'
                                         value={selectedClass}
                                         onChange={e => setSelectedClass(e.target.value)}
                                     >
+                                        <option value="ANY">ANY</option>
                                         <option value="AC1">AC1</option>
                                         <option value="AC2">AC2</option>
                                         <option value="AC3">AC3</option>
                                         <option value="CC">CC</option>
                                         <option value="EC">EC</option>
                                         <option value="SL">SL</option>
-                                        <option value="ANY">ANY</option>
                                     </select>
                                 </div>
 
@@ -100,7 +100,7 @@ const handleClick = async () => {
                         {/* {search} */}
                     </div>
                 </div>
-                {search ? <div key={search}> <SearchRes f_sp = {sp} f_dp ={dp} f_class={selclass} f_doj={doj}/> </div> : <h2>Select some parameters</h2>}
+                {search ? <div className='w-[1500px]' key={search}> <SearchRes f_sp = {sp} f_dp ={dp} f_class={selclass} f_doj={doj}/> </div> : <h2>Select some parameters</h2>}
             </div>
         </div>
 

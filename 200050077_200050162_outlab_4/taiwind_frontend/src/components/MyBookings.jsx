@@ -116,7 +116,7 @@ export default function MyBookings() {
         </tbody>
       </table>
 {/*-----------------------Saperator------------------------------------------------- -----------------------------*/}
-<h1 className="text-center">Your Previous Journeys </h1>
+<h1 className="tex-center">Your Previous Journeys </h1>
       <table class="w-full whitespace-no-wrap">
         <thead>
           <tr class="text-xs font-semibold tracking-wide text-left text-gray-500 uppercase border-b bg-gray-50">

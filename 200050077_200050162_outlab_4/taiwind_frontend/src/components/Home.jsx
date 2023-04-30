@@ -7,8 +7,8 @@ import AuthApi from '../utils/AuthApi';
 export default function Home() {
   return (
      <div>
-          {/* <div className="w-1/2 grid h-screen place-items-center"> */}
-            <div>
+          <div className="w-2/3 mx-auto">
+            {/* <div> */}
             <SearchBox/>
           </div>
       </div>

@@ -38,11 +38,58 @@ export default function SearchRes(props) {
 
   return (
     <div className="App">
+{/*  Saperator ------------------------------------------------ */}
+
+
+  <table class="w-[1250px] whitespace-no-wrap">
+        <thead>
+          <tr class="text-xs font-semibold tracking-wide text-left text-gray-500 uppercase border-b bg-gray-50">
+            <th class="px-4 py-3">Train Number</th>
+            <th class="px-4 py-3">Date of Journey</th>
+            <th class="px-4 py-3">Source</th>
+            <th class="px-4 py-3">Destination</th>
+            <th class="px-4 py-3">Class</th>
+            <th class="px-4 py-3">Seats Left</th>
+            <th class="px-4 py-3">BookTicket</th>
+          </tr>
+        </thead>
+        <tbody class="bg-white divide-y">
+          {trains.map((item, index) => (
+            <tr class="text-gray-700">
+              <td class="px-4 py-3">{item.tname}</td>
+              <td class="px-4 py-3">{item.doj}</td>
+              <td class="px-4 py-3">{item.classseats_sp}</td>
+              <td class="px-4 py-3">{item.classseats_dp}</td>
+              <td class="px-4 py-3">{item.class}</td>
+              <td class="px-4 py-3">{item.seatsleft}</td>
+              <td>
+                <button
+                  className={ "inline-block rounded bg-blue-500 px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-primary-700 transition duration-150 ease-in-out hover:bg-primary-accent-100 focus:bg-primary-accent-100 focus:outline-none focus:ring-0 active:bg-primary-accent-200"
+                  }
+                  onClick={() => {
+                  handlebook(
+                    item.trainno,
+                    item.classseats_sp,
+                    item.classseats_dp,
+                    item.doj,
+                    item.class
+                  );
+                }}
+                >
+                  Book Ticket
+                </button>
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+
+{/**----------------------------------------------------------------------Saperator------------------------------------------- */}
       <tbody>
         <tr>
           <th>BookTicket</th>
           <th>tname</th>
-          <th>doj</th>
+          <th>Date of Journeu</th>
           <th>class_sp</th>
           <th>class_dp</th>
           <th>class</th>
@@ -52,7 +99,7 @@ export default function SearchRes(props) {
           <tr class="" key={index}>
             <td>
               <button
-                className="inline-block rounded bg-blue-500 px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-primary-700 transition duration-150 ease-in-out hover:bg-primary-accent-100 focus:bg-primary-accent-100 focus:outline-none focus:ring-0 active:bg-primary-accent-200"
+                className=""
                 onClick={() => {
                   handlebook(
                     item.trainno,
