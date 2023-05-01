@@ -72,7 +72,7 @@ router.post("/cancel-ticket", async (req, res) => {
     if (req.session.user) {
       const { pnr } = req.body;
       await pool.query("select insert_into_canc ($1 , $2 )", [pnr, 1500]);
-
+      
       return res.status(200).json({
         canc: true
       });
