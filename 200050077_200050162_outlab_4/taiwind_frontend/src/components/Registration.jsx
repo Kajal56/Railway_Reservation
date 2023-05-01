@@ -3,11 +3,20 @@ import { useNavigate } from "react-router-dom";
 import { register } from "./auth-api";
 export default function Register() {
   const [emailid, setEmailid] = useState("");
+
   const [password, setPassword] = useState("");
   const [dob, setDob] = useState("");
   const [mobileno, setMobileno] = useState("");
   const [problem, setProblem] = useState(false);
   const [message, setMessage] = useState("");
+  
+  const [tname, setTname] = useState("");
+  const [sp, setSp] = useState("");
+  const [dp, setDp] = useState("");
+  const [st, setSt] = useState("");
+  const [dt, setDt] = useState("");
+  const [dd, setDd] = useState("");
+  const [distance, setDistance] = useState("");
   const navigate = useNavigate();
   const handleSubmit = async (event) => {
     event.preventDefault();

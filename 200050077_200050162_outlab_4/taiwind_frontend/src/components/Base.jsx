@@ -9,11 +9,13 @@ import Register from "./Registration";
 import { useAuth } from '../contexts/AuthContext';
 import PnrSearch from './Pnr'
 import Navbar from './NavBar';
+import  AdminPage  from './AdminPage';
 function Base() {
 
 
     const {
         isLoggedIn,
+        isAdmin
       } = useAuth();
     return  (
         isLoggedIn ? (
@@ -27,6 +29,7 @@ function Base() {
             <Route path ='/login' element= {<Login/>}></Route>
             <Route path ='/register' element= {<Register/>}></Route>
             <Route path ='/pnr' element= {<PnrSearch/>} ></Route>
+            <Route path ='/admin-page' element= {<AdminPage/>} ></Route>
 
           </Routes>
         ) : (
@@ -40,6 +43,7 @@ function Base() {
             <Route path ='/login' element= {<Login/>}></Route>
             <Route path ='/register' element= {<Register/>}></Route>
             <Route path ='/pnr' element= {<PnrSearch/>} ></Route>
+            <Route path ='/admin-page' element= {<AdminPage/>} ></Route>
 
           </Routes>
         )

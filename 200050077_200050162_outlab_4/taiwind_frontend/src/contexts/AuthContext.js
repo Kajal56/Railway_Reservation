@@ -1,6 +1,6 @@
 import React from "react";
 import { useContext, useState, useEffect } from "react";
-import { userInfo } from "../components/auth-api";
+import { userInfo , ifAdmin} from "../components/auth-api";
 const AuthContext = React.createContext();
 
 export function useAuth(){
@@ -11,6 +11,7 @@ export function useAuth(){
 export function AuthProvider(props){
     const [authUser , setAuthUser] = useState({});
     const [isLoggedIn , setIsLoggedIn] = useState(false);
+    const [isAdmin, setIsAdmin] = useState(false) ;
     const checkLogin = async () => {
       try {
         const res = await userInfo();
@@ -25,6 +26,9 @@ export function AuthProvider(props){
         console.log("AuthContext : Res", res)
         console.log("AuthContext : authUser", authUser);
         console.log("AuthContext : isLoggedIn", isLoggedIn);
+        console.log("AuthContext : isdmin", isAdmin);
+        const res1 = await ifAdmin();
+        setIsAdmin(res1.isAdmin);
       } catch (err) {
         console.log(err.message);
       }
@@ -38,7 +42,9 @@ export function AuthProvider(props){
         authUser,
         setAuthUser,
         isLoggedIn,
-        setIsLoggedIn
+        setIsLoggedIn,
+        isAdmin,
+        setIsAdmin
     }
     return (
         <AuthContext.Provider value = {value}>{props.children}</AuthContext.Provider>

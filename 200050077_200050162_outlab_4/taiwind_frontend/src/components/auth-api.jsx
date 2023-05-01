@@ -11,6 +11,16 @@ async function login(user) {
     return json;
   }
   
+
+  async function ifAdmin() {
+    // console.log(user);
+    const response = await fetch("/auth/is-admin", {
+      method: "GET",
+    });
+    const json = await response.json();
+    return json;
+  }
+  
   async function register(user) {
     console.log(user);
     const response = await fetch("/auth/register", {
@@ -120,6 +130,48 @@ async function login(user) {
     console.log(json);
     return json;
   }
+
+
+  async function add_train(train) {
+    // console.log(user);
+    const response = await fetch("/auth/add-train", {
+      method: "POST",
+      body: JSON.stringify(train),
+      headers: {
+        "Content-Type": "application/json"
+      }
+    });
+    const json = await response.json();
+    return json;
+  }
+  
+  async function add_classeats(classseat) {
+    // console.log(user);
+    const response = await fetch("/auth/add-classseat", {
+      method: "POST",
+      body: JSON.stringify(classseat),
+      headers: {
+        "Content-Type": "application/json"
+      }
+    });
+    const json = await response.json();
+    return json;
+  }
+
+  async function make_admin(user) {
+    // console.log(user);
+    const response = await fetch("/auth/make-admin", {
+      method: "POST",
+      body: JSON.stringify(user),
+      headers: {
+        "Content-Type": "application/json"
+      }
+    });
+    const json = await response.json();
+    return json;
+  }
+  
+  
   
   // -----------------------------------------------------------------
   
@@ -133,5 +185,9 @@ async function login(user) {
     userInfo,
     getBookings,  
     bookTicket,   //trainno, sp, dp, doj, j_class
-    cancelTicket  //pnr
+    cancelTicket , //pnr
+    ifAdmin ,
+    add_train,
+    add_classeats,
+    make_admin
   }

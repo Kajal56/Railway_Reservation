@@ -85,7 +85,7 @@ export default function SearchRes(props) {
       </table>
 
 {/**----------------------------------------------------------------------Saperator------------------------------------------- */}
-      <tbody>
+      {/* <tbody>
         <tr>
           <th>BookTicket</th>
           <th>tname</th>
@@ -121,7 +121,7 @@ export default function SearchRes(props) {
             <td class="whitespace-nowrap px-6 py-4">{item.seatsleft}</td>
           </tr>
         ))}
-      </tbody>
+      </tbody> */}
     </div>
   );
 

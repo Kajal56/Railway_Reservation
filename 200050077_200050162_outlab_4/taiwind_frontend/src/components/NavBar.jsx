@@ -16,8 +16,11 @@ const Navbar = () => {
       authUser,
       setAuthUser,
       isLoggedIn,
-      setIsLoggedIn
+      setIsLoggedIn,
+      isAdmin,
+      setIsAdmin
     } = useAuth();
+    console.log("Is Admin  NavBar : " ,isAdmin)
     ///---------------UseContext ends 
     const  handleLogOut= async ()=>{
         const res = await logout();
@@ -38,6 +41,7 @@ const Navbar = () => {
           <li><NavLink className = {isnav ? 'hidden' : isnav} to="/user-info" smooth={true} offset={-100} duration={500}>About You</NavLink></li>
           <li><NavLink className = {isnav ? 'hidden' : isnav} to="/contact-us" smooth={true} offset={-50} duration={500}>Contact Us</NavLink></li>
           <li><NavLink className = {isnav ? 'hidden' : isnav} to="/pnr" smooth={true} offset={-50} duration={500}>PNR Search</NavLink></li>
+          <li><NavLink className = {(isnav || !isAdmin) ? 'hidden' : isnav} to="/admin-page" smooth={true} offset={-50} duration={500}>Admin</NavLink></li>
           </ul>
         </div>
         {!isLoggedIn ?
@@ -63,6 +67,7 @@ const Navbar = () => {
           <li className='border-b-2 border-zinc-300 w-full'><NavLink onClick={handleClose} to="user-info" smooth={true} offset={-200} duration={500}>About You</NavLink></li>
           <li className='border-b-2 border-zinc-300 w-full'><NavLink onClick={handleClose} to="about-us" smooth={true} offset={-50} duration={500}>About Us</NavLink></li>
           <li className='border-b-2 border-zinc-300 w-full'><NavLink onClick={handleClose} to="pnr" smooth={true} offset={-100} duration={500}>PNR search</NavLink></li>
+          <li className={!isAdmin ? 'hidden':'border-b-2 border-zinc-300 w-full'}><NavLink onClick={handleClose} to="pnr" smooth={true} offset={-100} duration={500}>PNR search</NavLink></li>
 
         {!isLoggedIn ?
         <div className='flex flex-col my-4'>
@@ -73,7 +78,7 @@ const Navbar = () => {
         :
         <div>
             {/* <button  className='bg-transparent text-indigo-600 px-8 py-3 mb-4'>LogOut</button> */}
-            <button  className='bg-slate-600 text-indigo-600 px-8 py-3 mb-4'>LogOut</button>
+            <button onClick={handleLogOut} className='bg-slate-600 text-indigo-600 px-8 py-3 mb-4'>LogOut</button>
 
         </div>
         }
